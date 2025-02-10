@@ -1,16 +1,12 @@
-/* const sourceObject = {
-    num: 42,
-    bool: true,
-    str: 'some text',
-    log: console.log,
-}
- */
-/* console.log(sourceObject['num']);
-console.log(sourceObject.bool = false); */
+const sourceObject = new Map([
+    ['num', 42],
+    ['bool', true],
+    ['str', 'some text'],
+    ['log', console.log],
+]);
 
 function get(k) {
-    let v = sourceObject.get(k);
-    return v;
+    return sourceObject.get(k);
 }
 
 function set(k, v) {
