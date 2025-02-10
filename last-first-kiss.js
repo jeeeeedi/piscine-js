@@ -7,5 +7,5 @@ function last(l) {
 }
 
 function kiss(k) {
-    return [k[0], k[k.length - 1]];
+    return [k[k.length - 1], k[0]];
 }
