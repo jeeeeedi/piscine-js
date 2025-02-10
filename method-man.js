@@ -23,5 +23,7 @@ function whisper(wh) {
 
 //capitalize: that takes a string and transforms it so that the first character is upper case, and the subsequent characters are lower case.
 function capitalize(c) {
-    return c.charAt[0].toUpperCase() + c.slice(1);
+    return c[0].toUpperCase() + c.slice(1);
 }
+
+//console.log(capitalize('str'));
