@@ -1,8 +1,8 @@
 function get(key) {
-return get.get(key);
+    return sourceObject.get(key);
 }
 
 function set(k, v) {
-    set.set(k, v);
+    sourceObject.set(k, v);
     return v;
 }
