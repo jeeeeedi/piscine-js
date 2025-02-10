@@ -14,7 +14,7 @@ const arfs = new Map([
 function dogYears(planet, ageSec) {
     const planetYear = arfs.get(planet);
     const arfYears = (ageSec / (31557600 * planetYear)) * 7;
-    roundedArfs = Math.round(arfYears * 100) / 100;
+    const roundedArfs = Math.round(arfYears * 100) / 100;
     return roundedArfs;
 }
 
