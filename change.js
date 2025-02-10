@@ -1,15 +1,10 @@
-const sourceObject = new Map([
-    ['num', 42],
-    ['bool', true],
-    ['str', 'some text'],
-    ['log', console.log],
-]);
+const sourceObjectMap = new Map(Object.entries(sourceObject));
 
 function get(k) {
-    return sourceObject.get(k);
+    return sourceObjectMap.get(k);
 }
 
 function set(k, v) {
-    sourceObject.set(k, v);
+    sourceObjectMap.set(k, v);
     return v;
 }
