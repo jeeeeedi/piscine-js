@@ -1,7 +1,7 @@
 const escapeStr = "`\\/\"'";
 //console.log("`\\/\"'");
 
-const arr = ["4", "'2'"];
+const arr = [4, "2"];
 
 const obj = {
     str: "Hello World!",
@@ -11,7 +11,7 @@ const obj = {
 };
 
 const nested = {
-    arr: ["4", "undefined", "'2'"],
+    arr: [4, undefined, "2"],
     obj: {
         str: "Hello World!",
         num: 100,
