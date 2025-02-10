@@ -1,3 +1,5 @@
-let smalls = Number.MAX_SAFE_INTEGER;
+let smalls = Number.MAX_VALUE;
 
-let biggie = Number.MIN_SAFE_INTEGER;
+let biggie = Number.MIN_VALUE;
+
+console.log(smalls, biggie);
