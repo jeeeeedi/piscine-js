@@ -18,4 +18,4 @@ function dogYears(planet, ageSec) {
     return roundedArfs;
 }
 
-console.log(dogYears('earth', 1000000000))
+//console.log(dogYears('earth', 1000000000))
