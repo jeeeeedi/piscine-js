@@ -19,6 +19,10 @@ const nested = {
     }
 }
 
-Object.freeze(nested)
-Object.freeze(arr)
-Object.freeze(obj)
+Object.freeze(nested);
+Object.freeze(arr);
+Object.freeze(obj);
+
+/* console.log(Object.isFrozen(nested))
+console.log(Object.isFrozen(arr))
+console.log(Object.isFrozen(obj)) */
