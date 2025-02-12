@@ -65,18 +65,22 @@ function floor(x) {
 function trunc(x) {
     // For positive numbers
     if (x >= 0) {
-        let result = x;
-        while (result >= 1) {
-            result -= 1;  // Subtract 1 until the number is less than 1
+        let intPart = x;
+        while (intPart >= 1) {
+            intPart -= 1; // Subtract 1 repeatedly until it's less than 1
         }
-        return x - result; // Return integer part
+        return x - intPart; // The fractional part is the original number minus the integer part
     }
     // For negative numbers
     else {
-        let result = x;
-        while (result < -1) {
-            result += 1;  // Add 1 until the number is greater than -1
+        let intPart = x;
+        while (intPart <= -1) {
+            intPart += 1; // Add 1 repeatedly until it's greater than -1
         }
-        return x - result; // Return integer part
+        return x - intPart; // The fractional part is the original number minus the integer part
     }
 }
+
+console.log(trunc(0xfffffffff + Math.PI));  // Works without infinite loop
+console.log(trunc(-0xfffffffff - Math.PI)); // Works without infinite loop
+
