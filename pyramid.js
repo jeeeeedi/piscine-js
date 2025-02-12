@@ -2,13 +2,13 @@ function pyramid(s, n) {
     let result = '';
     let spaces = '';
     let chars = '';
-    const baseN = n + (n - 1);
+    const baseN = (n * 2 * s.length) - s.length;
 
     for (let line = 1; line <= n; line++) {
         const charN = (line * 2) - 1;
 
         //accumulate spaces
-        for (let sp = 1; sp <= (baseN - charN) / 2; sp++) {
+        for (let sp = 1; sp <= (baseN - charN * s.length) / 2; sp++) {
             spaces += ' ';
         }
 
@@ -29,4 +29,3 @@ function pyramid(s, n) {
     return result;
 }
 
-//console.log(pyramid('*', 5))
