@@ -10,27 +10,27 @@ function multiply(a, b) {
         case (a < 0 && b < 0):
             a = -a;
             b = -b;
-            for (i = 0; i < b; i++) {
+            for (let i = 0; i < b; i++) {
                 result += a;
             }
             return result;
 
         case (a < 0 && b > 0):
             a = -a;
-            for (i = 0; i < b; i++) {
+            for (let i = 0; i < b; i++) {
                 result += a;
             }
             return -result;
 
         case (b < 0 && a > 0):
             b = -b;
-            for (i = 0; i < b; i++) {
+            for (let i = 0; i < b; i++) {
                 result += a;
             }
             return -result;
 
         default /* (a >= 0 || b >= 0) */:
-            for (i = 0; i < b; i++) {
+            for (let i = 0; i < b; i++) {
                 result += a;
             }
             return result;
