@@ -63,24 +63,42 @@ function floor(x) {
 
 //truncates (cuts off) the dot and the digits to the right of it, no matter whether the argument is a positive or negative number.
 function trunc(x) {
-    // For positive numbers
-    if (x >= 0) {
-        let intPart = x;
-        while (intPart >= 1) {
-            intPart -= 1; // Subtract 1 repeatedly until it's less than 1
+    if (x > 0xfffffffff || x < -0xfffffffff) {
+        x -= 0xfffffffff
+        if (x >= 0) {
+            let result = x;
+            while (result >= 1) {
+                result -= 1;  // Subtract 1 until the number is less than 1
+            }
+            return x - result + 0xfffffffff; // Return integer part
         }
-        return x - intPart; // The fractional part is the original number minus the integer part
-    }
-    // For negative numbers
-    else {
-        let intPart = x;
-        while (intPart <= -1) {
-            intPart += 1; // Add 1 repeatedly until it's greater than -1
+        // For negative numbers
+        else {
+            let result = x;
+            while (result < -1) {
+                result += 1;  // Add 1 until the number is greater than -1
+            }
+            return x - result + 0xfffffffff; // Return integer part
         }
-        return x - intPart; // The fractional part is the original number minus the integer part
+    } else {
+        // For positive numbers
+        if (x >= 0) {
+            let result = x;
+            while (result >= 1) {
+                result -= 1;  // Subtract 1 until the number is less than 1
+            }
+            return x - result; // Return integer part
+        }
+        // For negative numbers
+        else {
+            let result = x;
+            while (result < -1) {
+                result += 1;  // Add 1 until the number is greater than -1
+            }
+            return x - result; // Return integer part
+        }
     }
 }
 
-console.log(trunc(0xfffffffff + Math.PI));  // Works without infinite loop
-console.log(trunc(-0xfffffffff - Math.PI)); // Works without infinite loop
-
+console.log(trunc(0xfffffffff + Math.PI))
+console.log(trunc(-0xfffffffff + Math.PI))
