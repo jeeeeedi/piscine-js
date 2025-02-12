@@ -17,7 +17,7 @@ function pyramid(s, n) {
             chars += String(s);
         }
 
-        result += spaces + chars + spaces;
+        result += spaces + chars;
         spaces = '';
         chars = '';
 
@@ -29,4 +29,4 @@ function pyramid(s, n) {
     return result;
 }
 
-/* console.log(pyramid('*', 5)) */
+//console.log(pyramid('*', 5))
