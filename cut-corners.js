@@ -96,6 +96,6 @@ function trunc(x) {
     }
 }
 
-
+/* 
 console.log(trunc(0xfffffffff + Math.PI))
-console.log(trunc(-0xfffffffff + Math.PI))
+console.log(trunc(-0xfffffffff + Math.PI)) */
