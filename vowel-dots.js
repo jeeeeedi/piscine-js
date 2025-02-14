@@ -1,6 +1,5 @@
 function vowelDots(s) {
     let result = '';
-    const vowels = /[aeiou]/; // Brackets /[abc]/ specifies matches for any of the characters a, b, or c
 
     for (let i = 0; i < s.length; i++) {
         if (s[i].match(vowels)) {
@@ -11,3 +10,5 @@ function vowelDots(s) {
     }
     return result;
 }
+
+const vowels = /[aeiou]/; // Brackets /[abc]/ specifies matches for any of the characters a, b, or c
