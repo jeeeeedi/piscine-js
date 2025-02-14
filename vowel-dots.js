@@ -11,4 +11,4 @@ function vowelDots(s) {
     return result;
 }
 
-const vowels = /[aeiou]/; // Brackets /[abc]/ specifies matches for any of the characters a, b, or c
+const vowels = /[aeiouAEIOU]/; // Brackets /[abc]/ specifies matches for any of the characters a, b, or c
