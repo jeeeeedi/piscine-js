@@ -1,5 +1,5 @@
 function firstDayWeek(week, year) {
-    date = new Date(year);
+    let date = new Date(year);
 
     let firstDayofYear = date.getDay(); // Sunday-Saturday: 0-6
     let zeroMonday = (firstDayofYear + 6) % 7; // Convert Sunday=0 to Monday=0
