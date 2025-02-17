@@ -1,19 +1,48 @@
 //isValid: accepts a Date, and returns false if the Date is invalid.
 function isValid(d) {
-
-    if (new Date(d) !== invalid) {
+    if (d === undefined || d === null || d === NaN || d === '' || d === new Date('') || d === new Date(NaN) || new Date(d) === invalid) {
+        return false;
+    } else if (new Date(d) !== invalid) {
         return true;
-    } else if (d === undefined || d === null || d === NaN || d === '' || d === new Date('') || d === new Date(NaN) || new Date(d) === invalid) {
+    }
+}
+
+//isAfter: accepts two Date arguments, and returns true if the first is greater then the second.
+function isAfter(d1, d2) {
+    if (isValid(d1) > isValid(d2)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//isBefore: accepts two Date arguments, and returns true if the second is greater than the first.
+function isBefore(d1, d2) {
+    if (isValid(d1) < isValid(d2)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//isFuture: accepts a Date, and returns true if the Date is valid, and is after than the present date.
+function isFuture(d) {
+    if (isValid(d) > Date.now()) {
+        return true;
+    } else {
         return false;
     }
 }
 
 
-//isAfter: accepts two Date arguments, and returns true if the first is greater then the second.
-//isBefore: accepts two Date arguments, and returns true if the second is greater than the first.
-//isFuture: accepts a Date, and returns true if the Date is valid, and is after than the present date.
 //isPast: accepts a Date, and returns true if the Date is valid, and is before the present date.
-
+function isPast(d) {
+    if (isValid(d) < Date.now()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /* 
 // is the date a valid date?
