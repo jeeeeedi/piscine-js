@@ -1,5 +1,6 @@
 function firstDayWeek(week, year) {
-    date = new Date(year);
+    date = new Date(Number(year));
+    result = '';
 
     let firstDayofYear = date.getDay(); // Sunday-Saturday: 0-6
     let zeroMonday = (firstDayofYear + 6) % 7; // Convert Sunday=0 to Monday=0
@@ -11,7 +12,8 @@ function firstDayWeek(week, year) {
     } else {
         date.setDate(date.getDate() + ((week - 1) * 7) + 1)
     }
-    return formatDate(date);
+    result = formatDate(date);
+    return result;
 }
 
 // Helper function to format date as 'DD-MM-YYYY'
