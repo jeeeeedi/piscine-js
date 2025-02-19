@@ -29,37 +29,41 @@ function foldRight(arr, fn, acc) {
 }
 
 function reduce(arr, fn) {
-    if (Array.isArray(arr)) {
+    if (Array.isArray(arr) && arr.length >= 1) {
         let sum = 0;
         let result = '';
-        let newArr = [];
+        let newObj = {};
         for (let i = 0; i < arr.length; i++) {
             if (typeof arr[i] === 'number') {
                 sum = Number(fn(sum, arr[i]));
             } else if (typeof arr[i] === 'string') {
                 result += arr[i];
             } else if (typeof arr[i] === 'object') {
-                newArr.push(arr[i]);
+                newObj = { ...newObj, ...arr[i] };
             }
         }
-        return sum || result || newArr;
+        return sum || result || newObj;
+    } else {
+        throw Error;
     }
 }
 
 function reduceRight(arr, fn) {
-    if (Array.isArray(arr)) {
+    if (Array.isArray(arr) && arr.length >= 1) {
         let sum = 0;
         let result = '';
-        let newArr = [];
+        let newObj = {};
         for (let i = arr.length - 1; i >= 0; i--) {
             if (typeof arr[i] === 'number') {
                 sum = Number(fn(sum, arr[i]));
             } else if (typeof arr[i] === 'string') {
                 result += arr[i];
             } else if (typeof arr[i] === 'object') {
-                newArr.push(arr[i]);
+                newObj = { ...newObj, ...arr[i] };
             }
         }
-        return sum || result || newArr;
+        return sum || result || newObj;
+    } else {
+        throw Error;
     }
 }
