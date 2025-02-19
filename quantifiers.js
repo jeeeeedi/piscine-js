@@ -1,29 +1,35 @@
 function every(arr, fn) {
     if (Array.isArray(arr)) {
-        let newArr = [];
+        arr.sort();
         for (let i = 0; i < arr.length; i++) {
-            fn(arr[i]) ? newArr.push(arr[i]) : null;
+            if (fn(arr[i])) {
+                return true;
+            }
         }
-        return arr.length === newArr.length ? true : false;
+        return false;
     }
 }
 
 function some(arr, fn) {
     if (Array.isArray(arr)) {
-        let newArr = [];
+        arr.sort();
         for (let i = 0; i < arr.length; i++) {
-            fn(arr[i]) ? newArr.push(arr[i]) : null;
+            if (fn(arr[i])) {
+                return true;
+            }
         }
-        return newArr.length > 0 ? true : false;
+        return false;
     }
 }
 
 function none(arr, fn) {
     if (Array.isArray(arr)) {
-        let newArr = [];
+        arr.sort();
         for (let i = 0; i < arr.length; i++) {
-            fn(arr[i]) ? newArr.push(arr[i]) : null;
+            if (fn(arr[i])) {
+                return false;
+            }
         }
-        return newArr.length === 0 ? true : false;
+        return true;
     }
 }
