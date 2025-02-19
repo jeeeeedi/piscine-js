@@ -6,20 +6,14 @@ function adder(...arr) {
 
 function sumOrMul(arr) {
     if (Array.isArray(arr)) {
-        return ((arr.flat(Infinity)).some(el => ((el) % 2 === 0))).reduce((acc, num) => acc + num, 0);
+        return (arr.flat(Infinity)).reduce((acc, num) => {
+            return num % 2 === 0 ? acc * num : acc + num;
+        }, 0);
     }
 }
 
-function funcExec(arr) {
+function funcExec(arr, i) {
     if (Array.isArray(arr)) {
-        return;
+        return arr.reduce((acc, fn) => fn(acc), i);
     }
 }
-
-// TESTS
-
-/* console.log(adder([1, 2, 3, 4]))
-console.log(adder([9, 24, 7, 11, 3], 10))
-console.log(adder([])) */
-
-console.log((sumOrMul([29, 23, 3, 2, 25]), 135))
