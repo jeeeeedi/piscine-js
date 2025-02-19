@@ -1,19 +1,17 @@
-function adder(...arr) {
-    if (Array.isArray(arr)) {
-        return (arr.flat(Infinity)).reduce((acc, num) => acc + num, 0);
-    }
+function adder(arr, i) {
+        return arr.reduce((acc, num) => acc + num, (i === undefined ? 0 : i));
 }
 
-function sumOrMul(arr) {
+function sumOrMul(arr, i) {
     if (Array.isArray(arr)) {
-        return (arr.flat(Infinity)).reduce((acc, num) => {
+        return arr.reduce((acc, num) => {
             return num % 2 === 0 ? acc * num : acc + num;
-        }, 0);
+        }, (i === undefined ? 0 : i));
     }
 }
 
 function funcExec(arr, i) {
     if (Array.isArray(arr)) {
-        return arr.reduce((acc, fn) => fn(acc), i);
+        return arr.reduce((acc, fn) => fn(acc), (i === undefined ? 0 : i));
     }
 }
