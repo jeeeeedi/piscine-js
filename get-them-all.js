@@ -1,36 +1,29 @@
-function getArchitects(arr) {
-    if (Array.isArray(arr)) {
-        let architect = arr.map(architects => architects.tag === 'a');
-        let notArchitect = arr.map(notArchitects => notArchitects.tag !== 'a');
-        return [architect, notArchitect];
-    }
+function getArchitects() {
+    const architects = Array.from(document.getElementsByTagName("a"));
+    const notArchitects = Array.from(document.querySelectorAll("a"))
+        .filter(element => !architects.includes(element));
+    return [architects, notArchitects];
 }
 
-function getClassical(arr) {
-    if (Array.isArray(arr)) {
-        let classical = arr.map(classicals => classicals.classe === 'classical');
-        let notClassical = arr.map(notClassical => notClassical.classe !== 'classical');
-        return [classical, notClassical];
-    }
+function getClassical() {
+    let classicals = Array.from(document.getElementsByClassName("classical"));
+    let nonClassicals = Array.from(document.querySelectorAll(".classical"))
+        .filter(element => !classicals.includes(element));
+    return [classicals, nonClassicals];
 }
 
-function getActive(arr) {
-    if (Array.isArray(arr)) {
-        let classical = getClassical(arr)[0];
-        let active = classical.filter(actives => actives.active === true);
-        let nonActive = classical.filter(nonActives => nonActives.active === false);
-        return [active, nonActive];
-    }
+function getActive() {
+    const classicals = getClassical()[0];
+    const actives = classicals.filter(el => el.classList.contains("active"));
+    const nonActives = classicals.filter(el => !el.classList.contains("active"));
+    return [actives, nonActives];
 }
 
-function getBonannoPisano(arr) {
-    if (Array.isArray(arr)) {
-        let bon = document.getElementById("BonannoPisano");
-        let notBon = Array.from(document.querySelectorAll('a'))
-            .filter(noBon => noBon.id !== 'BonannoPisano' && getActive(arr)[0]
-                .some(active => active.id === noBon.id));
-        return [bon, notBon];
-    }
+function getBonannoPisano() {
+    const actives = getActive()[0];
+    const bon = [document.getElementById("BonannoPisano")];
+    const notBon = actives.filter(el => el !== bon[0]);
+    return [bon, notBon];
 }
 
 export { getArchitects, getClassical, getActive, getBonannoPisano };
