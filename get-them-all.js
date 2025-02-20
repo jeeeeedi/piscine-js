@@ -1,6 +1,6 @@
 function getArchitects() {
     const architects = Array.from(document.getElementsByTagName("a"));
-    const notArchitects = Array.from(document.querySelectorAll('span'));
+    const notArchitects = Array.from(document.getElementsByTagName('span'));
     return [architects, notArchitects];
 }
 
@@ -17,9 +17,10 @@ function getActive() {
 }
 
 function getBonannoPisano() {
-    const bon = document.getElementById('BonannoPisano');
-    const notBon = Array.from(document.querySelectorAll('a.classical.active:not(#BonannoPisano)'));
-    return [[bon], notBon];
+    let bon = document.getElementById("BonannoPisano");
+    let notBon = Array.from(document.querySelectorAll('a.classical.active:not(#BonannoPisano)'));
+    console.log(bon, notBon)
+    return [bon, notBon];
 }
 
 export { getArchitects, getClassical, getActive, getBonannoPisano };
