@@ -26,7 +26,11 @@ function getActive(arr) {
 function getBonannoPisano(arr) {
     if (Array.isArray(arr)) {
         let bon = document.getElementById("BonannoPisano");
-        let notBon = Array.from(document.querySelectorAll('a')).filter(noBon => noBon.id !== 'BonannoPisano' && getActive(arr)[0].some(active => active.id === noBon.id));
+        let notBon = Array.from(document.querySelectorAll('a'))
+            .filter(noBon => noBon.id !== 'BonannoPisano' && getActive(arr)[0]
+                .some(active => active.id === noBon.id));
         return [bon, notBon];
     }
 }
+
+export { getArchitects, getClassical, getActive, getBonannoPisano };
