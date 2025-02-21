@@ -4,7 +4,7 @@ function compose(e) {
 
         const note = document.createElement("div");
         document.querySelector("div");
-        note.textContent += ` ${e.key}`;
+        note.textContent += `${e.key}`;
         note.classList.add("note");
 
         note.style.backgroundColor = getColorFromKey(key);
