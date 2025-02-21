@@ -1,6 +1,6 @@
 import { colors } from './fifty-shades-of-cold.data.js'
 
-const cold = /(aqua|blue|turquoise|green|cyan|navy|purple)/ig;
+const cold = /(aqua|blue|turquoise|green|cyan|navy|purple)/;
 
 function generateClasses() {
 
