@@ -1,25 +1,28 @@
 import { colors } from './fifty-shades-of-cold.data.js'
 
+const cold = /(aqua|blue|turquoise|green|cyan|navy|purple)/ig;
+
 function generateClasses() {
 
     for (let i = 0; i < colors.length; i++) {
+        if (cold.test(colors[i])) {
+            const style = document.createElement("style");
+            style.textContent = `.${colors[i]} {
+            background: ${colors[i]};
+          }`;
+            document.head.appendChild(style);
 
-        const style = document.createElement("style");
-        style.textContent = `.${colors[i]} {
-    background: ${colors[i]};
-  }`;
-        document.head.appendChild(style);
-
-        const block = document.createElement("div");
-        block.textContent = `${colors[i]}`;
-        block.classList.add(`${colors[i]}`);
-        document.body.appendChild(block);
+            const block = document.createElement("div");
+            block.textContent = `${colors[i]}`;
+            block.classList.add(`${colors[i]}`);
+            document.body.appendChild(block);
+        }
     }
 
 }
 
+
 function generateColdShades() {
-    const cold = /(aqua|blue|turquoise|green|cyan|navy|purple)/ig;
 
     for (let i = 0; i < colors.length; i++) {
         if (cold.test(colors[i])) {
