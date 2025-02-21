@@ -1,75 +1,51 @@
-let lastCircle = null;
-let isTrapped = false;
-
 function createCircle(e) {
     const c = document.createElement("div");
-    c.classList.add("circle");
+    c.setAttribute('class', 'circle')
 
     c.style.background = "white";
     c.style.left = `${e.clientX - 25}px`;
     c.style.top = `${e.clientY - 25}px`;
     document.body.appendChild(c);
-    lastCircle = c;
-    isTrapped = false;
 }
 
 function moveCircle(e) {
-    const box = document.querySelector('.box');
-
-    if (lastCircle && !isTrapped) {
-        // Update the position of the last circle
-        lastCircle.style.left = `${e.clientX - 25}px`;  // Center the circle on the mouse
-        lastCircle.style.top = `${e.clientY - 25}px`;   // Center the circle on the mouse
+    const lastC = document.querySelector('div:last-child')
+    lastC.style.left = `${e.clientX - 25}px`
+    lastC.style.top = `${e.clientY - 25}px`
+    document.body.append(lastC)
+    let b = document.querySelector('div.box')
+    let d = b.getBoundingClientRect()
+    if (lastC.getAttribute('class') !== 'box') {
+        if ((+lastC.style.left.replace('px', '') > (d.x)) && (+lastC.style.left.replace('px', '') < (d.right - 50)) && (+lastC.style.top.replace('px', '') > (d.top)) && (+lastC.style.top.replace('px', '') < (d.bottom - 50))) {
+            lastC.style.background = 'var(--purple)'
+        }
     }
-
-    // Check if the circle is inside the box
-    if (isCircleInsideBox(lastCircle, box)) {
-        lastCircle.style.background = 'var(--purple)';
-        isTrapped = true;
-    } else if (!isTrapped) {
-        lastCircle.style.background = 'white';
-    }
-
-    // Function to check if the circle is inside the box
-    function isCircleInsideBox(lastCircle, box) {
-        if (!lastCircle || !box) return false;
-
-        // Get bounding rectangles
-        const circleRect = lastCircle.getBoundingClientRect();
-        const boxRect = box.getBoundingClientRect();
-
-        // Check if the circle is inside the box
-        return (
-            circleRect.left >= boxRect.left &&
-            circleRect.right <= boxRect.right &&
-            circleRect.top >= boxRect.top &&
-            circleRect.bottom <= boxRect.bottom
-        );
-    }
-
-    // Prevent the circle from moving outside the box if it is trapped
-    if (isTrapped) {
-        const circleRect = lastCircle.getBoundingClientRect();
-        const boxRect = box.getBoundingClientRect();
-
-        if (circleRect.left < boxRect.left) {
-            lastCircle.style.left = `${boxRect.left}px`;
+    if (e.clientX - 25 < (d.x) && lastC.style.background === 'var(--purple)') {
+        lastC.style.left = (d.x).toString() + 'px'
+        if (e.clientY - 25 < (d.top)) {
+            lastC.style.top = (d.y).toString() + 'px'
         }
-        if (circleRect.right > boxRect.right) {
-            lastCircle.style.left = `${boxRect.right - circleRect.width}px`;
+        if (e.clientY - 25 > (d.bottom - 50)) {
+            lastC.style.top = (d.bottom - 50).toString() + 'px'
         }
-        if (circleRect.top < boxRect.top) {
-            lastCircle.style.top = `${boxRect.top}px`;
+    } else if (e.clientX - 25 > (d.right - 50) && lastC.style.background === 'var(--purple)') {
+        lastC.style.left = (d.right - 50).toString() + 'px'
+        if (e.clientY - 25 < (d.top)) {
+            lastC.style.top = (d.y).toString() + 'px'
         }
-        if (circleRect.bottom > boxRect.bottom) {
-            lastCircle.style.top = `${boxRect.bottom - circleRect.height}px`;
+        if (e.clientY - 25 > (d.bottom - 50)) {
+            lastC.style.top = (d.bottom - 50).toString() + 'px'
         }
+    } else if ((e.clientY - 25 > (d.bottom - 50)) && lastC.style.background === 'var(--purple)') {
+        lastC.style.top = (d.bottom - 50).toString() + 'px'
+    } else if ((e.clientY - 25 < (d.top)) && lastC.style.background === 'var(--purple)') {
+        lastC.style.top = (d.top).toString() + 'px'
     }
 }
 
 function setBox() {
     const b = document.createElement("div");
-    b.classList.add("box");
+    b.setAttribute('class', 'box');
     document.body.appendChild(b);
 }
 
