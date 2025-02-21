@@ -6,7 +6,7 @@ function generateClasses() {
     const style = document.createElement("style");
     style.textContent = "";
     for (let i = 0; i < colors.length; i++) {
-        if (cold.test(colors[i])) {
+       // if (cold.test(colors[i])) {
             style.textContent += `.${colors[i]} {
             background: ${colors[i]};
           }
@@ -16,7 +16,7 @@ function generateClasses() {
                  block.textContent = `${colors[i]}`;
                  block.classList.add(`${colors[i]}`);
                  document.body.appendChild(block); */
-        }
+       // }
     }
     document.head.appendChild(style);
 
