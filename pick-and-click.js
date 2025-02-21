@@ -83,12 +83,13 @@ export function pick() {
 
   //do this on mouse click
   document.addEventListener("click", e => {
-    let getHsl = document.getElementsByClassName("hslDiv")[0].textContent;
-    let input = document.createElement("input");
-    document.body.appendChild(input);
-    input.value = getHsl;
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
+    if (e.target.classList.contains("hslDiv")) {
+      let hslValue = e.target.textContent.trim(); // Get the HSL text from the clicked div
+      
+      // Copy to clipboard using modern Clipboard API
+      navigator.clipboard.writeText(hslValue)
+          .then(() => console.log("Copied: " + hslValue))
+          .catch(err => console.error("Failed to copy: ", err));
+  }
   })
 }
