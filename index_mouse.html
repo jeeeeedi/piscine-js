@@ -2,18 +2,20 @@
 <html>
 
 <head>
-  <title>Pick & click</title>
+  <title>Mouse trap</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link id="fav" rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
-  <link rel="stylesheet" type="text/css" href="./pick-and-click.data.css">
+  <link rel="stylesheet" type="text/css" href="./mouse-trap.data.css">
 </head>
 
 <body>
   <script type="module">
 
-    import { pick } from './pick-and-click.js'
+    import { setBox, createCircle, moveCircle } from './mouse-trap.js'
 
-    pick()
+    setBox()
+    createCircle()
+    moveCircle()
 
   </script>
 </body>
