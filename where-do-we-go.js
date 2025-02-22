@@ -4,7 +4,7 @@ export function explore() {
     const n = places.filter(p => p.coordinates.includes("N"));
     const s = places.filter(p => p.coordinates.includes("S"));
     n.sort((a, b) => b.coordinates.localeCompare(a.coordinates));
-    s.sort((a, b) => b.coordinates.localeCompare(a.coordinates));
+    s.sort((a, b) => a.coordinates.localeCompare(b.coordinates));
     const sort = n.concat(s);
 
     sort.map(p => {
