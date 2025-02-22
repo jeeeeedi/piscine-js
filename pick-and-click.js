@@ -39,16 +39,16 @@ export function pick() {
 
     //set x,y
     let xLine = document.getElementById("axisX");
-    xLine.setAttributeNS(null, "x1", 0);
-    xLine.setAttributeNS(null, "x2", window.innerWidth);
+    xLine.setAttributeNS(null, "x1", e.clientX);
+    xLine.setAttributeNS(null, "x2", e.clientX);
     xLine.setAttributeNS(null, "y1", e.clientY);
     xLine.setAttributeNS(null, "y2", e.clientY);
 
     let yLine = document.getElementById("axisY");
     yLine.setAttributeNS(null, "x1", e.clientX);
     yLine.setAttributeNS(null, "x2", e.clientX);
-    yLine.setAttributeNS(null, "y1", 0);
-    yLine.setAttributeNS(null, "y2", window.innerHeight);
+    yLine.setAttributeNS(null, "y1", e.clientY);
+    yLine.setAttributeNS(null, "y2", e.clientY);
 
     //set bg to mouse position
     let x = e.clientX / window.innerWidth * 360;
