@@ -41,9 +41,8 @@ function cartTotal(obj) {
                 Object.fromEntries( //conv arr to object (to be put back into the v of obj/cart)
                     Object.entries(nutritionDB[k]) //access arr entries of nutritionDB matching k of obj
                         //.map(([nutrient, amount]) => [nutrient, (Math.round((amount * (v / 100)) * 10) / 10)]) // access k-v pairs of specific(k) nutritionDB, mult by v in obj/cart div by 100g
-                        .map(([nutrient, amount]) => [nutrient, (amount * (v / 100)).toFixed(3)]) // access k-v pairs of specific(k) nutritionDB, mult by v in obj/cart div by 100g
+                        .map(([nutrient, amount]) => [nutrient, Number((amount * (v / 100)).toFixed(3))]) // access k-v pairs of specific(k) nutritionDB, mult by v in obj/cart div by 100g
                     )
             ])
     );
 }
-
