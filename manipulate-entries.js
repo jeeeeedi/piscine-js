@@ -20,16 +20,17 @@ function reduceEntries(obj, condition, i) {
 
 //totalCalories: that will return the total calories of a cart.
 function totalCalories(obj) {
-    return Object.entries(obj)
+    return Math.round(Object.entries(obj)
         .reduce((acc, [k, v]) => {
             return acc + (nutritionDB[k].calories) * (v / 100);
-        }, 0);
+        }, 0) * 10) / 10;
 }
 
 //lowCarbs: that leaves only those items of the cart which have less than 50 grams of carbs after calculating the total amount.
 function lowCarbs(obj) {
-    return Object.entries(obj)
-        .filter(([k, v]) => (((nutritionDB[k].carbs || 0) * (v / 100)) < 50));
+    return Object.fromEntries(
+        Object.entries(obj)
+            .filter(([k, v]) => (((nutritionDB[k].carbs || 0) * (v / 100)) < 50)));
 }
 
 //cartTotal: that will give you the right amount of calories, proteins and so on for each item in your grocery cart.
@@ -39,9 +40,8 @@ function cartTotal(obj) {
             .map(([k, v]) => [k, //map goes thru each k-v pair of obj; but manipulate v of obj (grams in cart for a specific k)
                 Object.fromEntries( //conv arr to object (to be put back into the v of obj/cart)
                     Object.entries(nutritionDB[k]) //access arr entries of nutritionDB matching k of obj
-                        .map(([nutrient, amount]) => [nutrient, (amount * (v / 100))]) // access k-v pairs of specific(k) nutritionDB, mult by v in obj/cart div by 100g
+                        .map(([nutrient, amount]) => [nutrient, (Math.round((amount * (v / 100)) * 10) / 10)]) // access k-v pairs of specific(k) nutritionDB, mult by v in obj/cart div by 100g
                 )
             ])
     );
 }
-
