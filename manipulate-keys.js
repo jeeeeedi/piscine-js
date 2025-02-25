@@ -12,7 +12,7 @@ function mapKeys(obj, condition) {
 
 function reduceKeys(obj, condition, initialValue) {
     if (initialValue === 0) {
-        return 0;
+        return 1;
     } else if (initialValue) {
         return Object.keys(obj)
             .reduce((acc, k, i) => {
